@@ -3,9 +3,6 @@ import pyotp
 from user_store.user_store import get_user_secret, list_users
 
 
-PY_HUMAN_OPT_APP = 'HumanOPT'
-
-
 def main():
     print(list_users())
 
