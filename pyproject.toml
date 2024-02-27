@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "py-human-otp"
+version = "0.1.0"
+description = "Simple Python OTP backend, can be used to avoid deep fakes!"
+authors = ["Roy Ben Yosef <roy.benyosef@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pyotp = "^2.9.0"
+qrcode = {extras = ["pil"], version = "^7.4.2"}
+pillow = "^10.2.0"
+cryptography = "^42.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
