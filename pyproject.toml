@@ -10,6 +10,7 @@ python = "^3.8"
 pyotp = "^2.9.0"
 qrcode = {extras = ["pil"], version = "^7.4.2"}
 pillow = "^10.2.0"
+cryptography = "^42.0.3"
 
 
 [build-system]

@@ -1,3 +1,5 @@
+import os
+
 import pyotp
 import qrcode
 from app_consts import PY_HUMAN_OPT_APP
@@ -19,18 +21,23 @@ def generate_qr_code(totp_uri: str):
 
 
 def main():
-    print('Onboarding new user')
-    user_email = input('Enter new user email: ')
+    try:
+        print('Onboarding new user')
+        user_email = input('Enter new user email: ')
 
-    init_user_store()
+        init_user_store()
 
-    secret = pyotp.random_base32()
-    totp_uri = pyotp.totp.TOTP(secret).provisioning_uri(name=user_email, issuer_name=PY_HUMAN_OPT_APP)
+        secret = pyotp.random_base32()
+        totp_uri = pyotp.totp.TOTP(secret).provisioning_uri(name=user_email, issuer_name=PY_HUMAN_OPT_APP)
 
-    add_user(user_email, secret)
+        add_user(user_email, secret)
 
-    generate_qr_code(totp_uri)
-    print(f'User code: {secret}')
+        generate_qr_code(totp_uri)
+        print(f'User code: {secret}')
+    except ValueError as ex:
+        print(f'Error: {ex}')
+        os.exit(1)
+
 
 if __name__ == "__main__":
     main()
